@@ -1,0 +1,7 @@
+com\backendAnalyseSalaire\api\controller\MLController.class
+com\backendAnalyseSalaire\api\controller\HomeController.class
+com\backendAnalyseSalaire\api\controller\PersonController.class
+com\backendAnalyseSalaire\api\repository\PersonRepository.class
+com\backendAnalyseSalaire\api\model\Person.class
+com\backendAnalyseSalaire\api\BackendAnalyseSalaireApplication.class
+com\backendAnalyseSalaire\api\model\Person$Sexe.class
