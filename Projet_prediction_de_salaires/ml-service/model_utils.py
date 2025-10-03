@@ -9,6 +9,14 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
+from sqlalchemy import create_engine
+from dotenv import load_dotenv
+load_dotenv()
+
+db_url = os.environ["DATABASE_URL"]
+engine = create_engine(db_url)
+
+
 # Chemins pour sauvegarder les modèles
 LINEAR_MODEL_PATH = "linear_model.pkl"
 RF_MODEL_PATH = "random_forest.pkl"

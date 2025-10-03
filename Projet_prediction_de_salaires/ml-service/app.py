@@ -17,6 +17,14 @@ from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 import joblib
 from model_utils import load_models, train_and_save_advanced_models, load_advanced_models
 
+from dotenv import load_dotenv
+load_dotenv()
+from sqlalchemy import create_engine
+
+db_url = os.environ["DATABASE_URL"]
+print("✅ ⚠️ voilà DATABASE_URL : ", db_url)
+engine = create_engine(db_url)
+
 app = Flask(__name__)
 CORS(app)
 
