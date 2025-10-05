@@ -14,6 +14,7 @@ export default function Prediction() {
   const [loading, setLoading] = useState(false);
 
   const API_URL = process.env.REACT_APP_API_URL; // <- Utilisation de la variable Netlify
+  console.log(" ✅ api_url : " + process.env.REACT_APP_API_URL)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

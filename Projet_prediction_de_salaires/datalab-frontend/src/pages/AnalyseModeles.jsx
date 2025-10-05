@@ -5,6 +5,7 @@ const AnalyseModeles = () => {
 
   // ✅ Définir dynamiquement l’URL de l’API selon l’environnement
   const API_URL = process.env.REACT_APP_API_URL;
+  console.log(" ✅ api_url : " + process.env.REACT_APP_API_URL)
 
   useEffect(() => {
     // ✅ Utiliser l’URL dynamique

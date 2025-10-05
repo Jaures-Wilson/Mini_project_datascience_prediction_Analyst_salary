@@ -11,6 +11,7 @@ const ModelePrediction = () => {
 
   // 🔹 URL de l'API depuis Netlify environment variable
   const API_URL = process.env.REACT_APP_API_URL;
+  console.log(" ✅ api_url : " + process.env.REACT_APP_API_URL)
 
   useEffect(() => {
     if (!API_URL) {

@@ -8,6 +8,7 @@ const Dashboard = () => {
 
   // URL de l'API définie dans Netlify ou en local
   const API_URL = process.env.REACT_APP_API_URL;
+  console.log(" ✅ api_url : " + process.env.REACT_APP_API_URL)
 
   useEffect(() => {
     const fetchData = async () => {
