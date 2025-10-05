@@ -7,7 +7,6 @@ const AnalyseBivariee = () => {
 
   // ✅ URL de base récupérée depuis la variable d’environnement Netlify
   const API_BASE_URL = import.meta.env.VITE_API_URL;;
-  console.log(" ✅ api_url : " + import.meta.env.VITE_API_URL)
 
   useEffect(() => {
     Promise.all([

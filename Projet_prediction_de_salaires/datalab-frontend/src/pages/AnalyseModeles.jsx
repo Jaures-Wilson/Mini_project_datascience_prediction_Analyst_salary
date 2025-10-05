@@ -5,7 +5,6 @@ const AnalyseModeles = () => {
 
   // ✅ Définir dynamiquement l’URL de l’API selon l’environnement
   const API_URL = import.meta.env.VITE_API_URL;
-  console.log(" ✅ api_url : " + import.meta.env.VITE_API_URL)
 
   useEffect(() => {
     // ✅ Utiliser l’URL dynamique

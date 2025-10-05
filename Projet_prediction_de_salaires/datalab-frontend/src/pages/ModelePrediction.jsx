@@ -10,8 +10,7 @@ const ModelePrediction = () => {
   const hoursTest = 45;
 
   // 🔹 URL de l'API depuis Netlify environment variable
-  const API_URL = import.meta.env.VITE_API_URL;;
-  console.log("✅ api_url : " + import.meta.env.VITE_API_URL)
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (!API_URL) {
