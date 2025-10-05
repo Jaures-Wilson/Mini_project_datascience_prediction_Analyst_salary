@@ -29,7 +29,7 @@ app = Flask(__name__)
 CORS(app)
 
 # === Charger le dataset ===
-df = pd.read_csv('../data/adult_clean.csv')
+df = pd.read_csv('data/adult_clean.csv')
 print("Colonnes du dataset :", df.columns)
 
 # === Charger ou entraîner les modèles ===

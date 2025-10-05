@@ -28,7 +28,7 @@ def train_and_save_models(force_train=False):
     Entraîne le modèle de régression linéaire et retourne le dataset de test.
     Si le modèle existe et force_train=False, il est chargé depuis disque.
     """
-    df = pd.read_csv('../data/adult_clean.csv')
+    df = pd.read_csv('data/adult_clean.csv')
 
     X = df[["age", "hours.per.week"]]
     y = df["salary"]
@@ -65,7 +65,7 @@ def train_and_save_models(force_train=False):
 
 
 def train_and_save_advanced_models(force_train=False):
-    df = pd.read_csv('../data/adult_clean.csv')
+    df = pd.read_csv('data/adult_clean.csv')
     X = df[["age", "hours.per.week"]]
     y = df["salary"]
 
