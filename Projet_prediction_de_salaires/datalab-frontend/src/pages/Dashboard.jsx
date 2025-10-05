@@ -9,12 +9,15 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         // Charger stats descriptives
-        const statsRes = await axios.get('http://127.0.0.1:5000/stats/descriptive');
+        const statsRes = await axios.get('${apiUrl}/stats/descriptive');
         setStats(statsRes.data);
 
         // Charger les graphes générés dynamiquement
-        const plotsRes = await axios.get('http://127.0.0.1:5000/stats/plots');
+        const plotsRes = await axios.get('${apiUrl}/stats/plots');
         setPlots(plotsRes.data.files);
 
         setLoading(false);
@@ -73,7 +76,7 @@ const Dashboard = () => {
                   {file.includes("corr_heatmap") && "Heatmap corrélations"}
                 </h3>
                 <img
-                  src={`http://127.0.0.1:5000${file}`}
+                  src={`${apiUrl}${file}`}
                   alt={file}
                   className="rounded shadow-md"
                 />

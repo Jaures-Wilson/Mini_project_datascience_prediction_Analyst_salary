@@ -6,9 +6,12 @@ const AnalyseBivariee = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     Promise.all([
-      fetch("http://127.0.0.1:5000/stats/anova").then((res) => res.json()),
-      fetch("http://127.0.0.1:5000/stats/correlation").then((res) => res.json()),
+      fetch("${apiUrl}/stats/anova").then((res) => res.json()),
+      fetch("${apiUrl}/stats/correlation").then((res) => res.json()),
     ])
       .then(([anovaData, corrData]) => {
         setAnova(anovaData);
@@ -43,7 +46,7 @@ const AnalyseBivariee = () => {
           </h2>
           <div className="flex justify-center">
             <img
-              src="http://127.0.0.1:5000/static/age_salary.png"
+              src="${apiUrl}/static/age_salary.png"
               alt="Scatterplot âge vs salaire"
               className="rounded shadow-md w-full max-w-lg"
             />
@@ -57,7 +60,7 @@ const AnalyseBivariee = () => {
           </h2>
           <div className="flex justify-center">
             <img
-              src="http://127.0.0.1:5000/static/corr_heatmap.png"
+              src="${apiUrl}/static/corr_heatmap.png"
               alt="Heatmap corrélations"
               className="rounded shadow-md w-full max-w-lg"
             />
@@ -71,7 +74,7 @@ const AnalyseBivariee = () => {
           </h2>
           <div className="flex justify-center">
             <img
-              src="http://127.0.0.1:5000/static/age_hist.png"
+              src="${apiUrl}/static/age_hist.png"
               alt="Histogramme âge"
               className="rounded shadow-md w-full max-w-lg"
             />
@@ -85,7 +88,7 @@ const AnalyseBivariee = () => {
           </h2>
           <div className="flex justify-center">
             <img
-              src="http://127.0.0.1:5000/static/hours_boxplot.png"
+              src="${apiUrl}/static/hours_boxplot.png"
               alt="Boxplot heures"
               className="rounded shadow-md w-full max-w-lg"
             />

@@ -4,7 +4,10 @@ const AnalyseModeles = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/model/random-forest")
+
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+    fetch("${apiUrl}/model/random-forest")
       .then((res) => res.json())
       .then((apiData) => {
         console.log("✅ Données reçues depuis l'API :", apiData);

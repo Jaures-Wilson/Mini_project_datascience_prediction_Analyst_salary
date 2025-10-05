@@ -10,17 +10,20 @@ const ModelePrediction = () => {
   const hoursTest = 45;
 
   useEffect(() => {
+
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     // === Régression Linéaire ===
     axios
       .get(
-        `http://127.0.0.1:5000/model/regression-linear?age=${ageTest}&hours=${hoursTest}`
+        `${apiUrl}/model/regression-linear?age=${ageTest}&hours=${hoursTest}`
       )
       .then((res) => setLinear(res.data))
       .catch((err) => console.error("Erreur Linéaire:", err));
 
     // === Évaluation des modèles avancés (RF & GB) ===
     axios
-      .get(`http://127.0.0.1:5000/model/compare`)
+      .get(`${apiUrl}/model/compare`)
       .then((res) => setEvaluation(res.data))
       .catch((err) => console.error("Erreur Évaluation:", err));
   }, []);
@@ -55,7 +58,7 @@ const ModelePrediction = () => {
             <strong>Intercept :</strong> {linear.intercept.toFixed(2)}
           </p>
           <img
-            src={`http://127.0.0.1:5000${linear.graph_url}`}
+            src={`${apiUrl}${linear.graph_url}`}
             alt="Graphique Régression Linéaire"
             className="rounded-lg shadow-md border border-gray-300 w-full max-w-3xl mx-auto"
           />
