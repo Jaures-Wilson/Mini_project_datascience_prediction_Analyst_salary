@@ -3,18 +3,22 @@ import React, { useEffect, useState } from "react";
 const AnalyseModeles = () => {
   const [data, setData] = useState(null);
 
+  // ✅ Définir dynamiquement l’URL de l’API selon l’environnement
+  const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:5000";
+
   useEffect(() => {
-
-    const apiUrl = process.env.REACT_APP_API_URL;
-
-    fetch("${apiUrl}/model/random-forest")
-      .then((res) => res.json())
+    // ✅ Utiliser l’URL dynamique
+    fetch(`${API_URL}/model/random-forest`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Erreur HTTP " + res.status);
+        return res.json();
+      })
       .then((apiData) => {
         console.log("✅ Données reçues depuis l'API :", apiData);
         setData(apiData);
       })
       .catch((err) => console.error("❌ Erreur API :", err));
-  }, []);
+  }, [API_URL]);
 
   if (!data) return <p className="text-gray-600">Chargement...</p>;
 

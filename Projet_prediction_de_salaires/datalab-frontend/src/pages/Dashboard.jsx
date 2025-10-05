@@ -6,28 +6,29 @@ const Dashboard = () => {
   const [plots, setPlots] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // URL de l'API définie dans Netlify ou en local
+  const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5000';
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-
-        const apiUrl = process.env.REACT_APP_API_URL;
-
         // Charger stats descriptives
-        const statsRes = await axios.get('${apiUrl}/stats/descriptive');
+        const statsRes = await axios.get(`${API_URL}/stats/descriptive`);
         setStats(statsRes.data);
 
         // Charger les graphes générés dynamiquement
-        const plotsRes = await axios.get('${apiUrl}/stats/plots');
+        const plotsRes = await axios.get(`${API_URL}/stats/plots`);
         setPlots(plotsRes.data.files);
 
         setLoading(false);
       } catch (error) {
         console.error("Erreur lors du chargement du dashboard:", error);
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, []);
+  }, [API_URL]);
 
   if (loading) {
     return (
@@ -67,21 +68,24 @@ const Dashboard = () => {
             Graphiques
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {plots.map((file, index) => (
-              <div key={index} className="flex flex-col items-center bg-gray-50 p-6 rounded">
-                <h3 className="mb-2 font-medium text-gray-600">
-                  {file.includes("age_hist") && "Histogramme âge"}
-                  {file.includes("hours_boxplot") && "Boxplot heures/semaine"}
-                  {file.includes("age_salary") && "Scatter âge vs salaire"}
-                  {file.includes("corr_heatmap") && "Heatmap corrélations"}
-                </h3>
-                <img
-                  src={`${apiUrl}${file}`}
-                  alt={file}
-                  className="rounded shadow-md"
-                />
-              </div>
-            ))}
+            {plots.map((file, index) => {
+              let title = '';
+              if (file.includes("age_hist")) title = "Histogramme âge";
+              if (file.includes("hours_boxplot")) title = "Boxplot heures/semaine";
+              if (file.includes("age_salary")) title = "Scatter âge vs salaire";
+              if (file.includes("corr_heatmap")) title = "Heatmap corrélations";
+
+              return (
+                <div key={index} className="flex flex-col items-center bg-gray-50 p-6 rounded">
+                  <h3 className="mb-2 font-medium text-gray-600">{title}</h3>
+                  <img
+                    src={`${API_URL}${file}`}
+                    alt={file}
+                    className="rounded shadow-md"
+                  />
+                </div>
+              );
+            })}
           </div>
         </section>
       </div>

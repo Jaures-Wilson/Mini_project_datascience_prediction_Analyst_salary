@@ -13,6 +13,8 @@ export default function Prediction() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
+  const API_URL = process.env.REACT_APP_API_URL; // <- Utilisation de la variable Netlify
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -48,7 +50,7 @@ export default function Prediction() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/predict", {
+      const res = await fetch(`${API_URL}/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)

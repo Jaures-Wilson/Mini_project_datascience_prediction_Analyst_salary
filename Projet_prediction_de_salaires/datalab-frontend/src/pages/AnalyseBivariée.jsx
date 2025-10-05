@@ -5,13 +5,13 @@ const AnalyseBivariee = () => {
   const [correlation, setCorrelation] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // ✅ URL de base récupérée depuis la variable d’environnement Netlify
+  const API_BASE_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
-
-    const apiUrl = process.env.REACT_APP_API_URL;
-
     Promise.all([
-      fetch("${apiUrl}/stats/anova").then((res) => res.json()),
-      fetch("${apiUrl}/stats/correlation").then((res) => res.json()),
+      fetch(`${API_BASE_URL}/stats/anova`).then((res) => res.json()),
+      fetch(`${API_BASE_URL}/stats/correlation`).then((res) => res.json()),
     ])
       .then(([anovaData, corrData]) => {
         setAnova(anovaData);
@@ -19,10 +19,10 @@ const AnalyseBivariee = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Erreur lors du chargement des données :", err);
         setLoading(false);
       });
-  }, []);
+  }, [API_BASE_URL]);
 
   if (loading) {
     return (
@@ -46,7 +46,7 @@ const AnalyseBivariee = () => {
           </h2>
           <div className="flex justify-center">
             <img
-              src="${apiUrl}/static/age_salary.png"
+              src={`${API_BASE_URL}/static/age_salary.png`}
               alt="Scatterplot âge vs salaire"
               className="rounded shadow-md w-full max-w-lg"
             />
@@ -60,7 +60,7 @@ const AnalyseBivariee = () => {
           </h2>
           <div className="flex justify-center">
             <img
-              src="${apiUrl}/static/corr_heatmap.png"
+              src={`${API_BASE_URL}/static/corr_heatmap.png`}
               alt="Heatmap corrélations"
               className="rounded shadow-md w-full max-w-lg"
             />
@@ -74,7 +74,7 @@ const AnalyseBivariee = () => {
           </h2>
           <div className="flex justify-center">
             <img
-              src="${apiUrl}/static/age_hist.png"
+              src={`${API_BASE_URL}/static/age_hist.png`}
               alt="Histogramme âge"
               className="rounded shadow-md w-full max-w-lg"
             />
@@ -88,7 +88,7 @@ const AnalyseBivariee = () => {
           </h2>
           <div className="flex justify-center">
             <img
-              src="${apiUrl}/static/hours_boxplot.png"
+              src={`${API_BASE_URL}/static/hours_boxplot.png`}
               alt="Boxplot heures"
               className="rounded shadow-md w-full max-w-lg"
             />

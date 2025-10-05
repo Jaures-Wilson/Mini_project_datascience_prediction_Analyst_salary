@@ -9,24 +9,40 @@ const ModelePrediction = () => {
   const ageTest = 28;
   const hoursTest = 45;
 
-  useEffect(() => {
+  // 🔹 URL de l'API depuis Netlify environment variable
+  const API_URL = process.env.REACT_APP_API_URL;
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+  useEffect(() => {
+    if (!API_URL) {
+      console.error("Erreur : REACT_APP_API_URL non définie !");
+      return;
+    }
 
     // === Régression Linéaire ===
-    axios
-      .get(
-        `${apiUrl}/model/regression-linear?age=${ageTest}&hours=${hoursTest}`
-      )
-      .then((res) => setLinear(res.data))
-      .catch((err) => console.error("Erreur Linéaire:", err));
+    const fetchLinear = async () => {
+      try {
+        const res = await axios.get(
+          `${API_URL}/model/regression-linear?age=${ageTest}&hours=${hoursTest}`
+        );
+        setLinear(res.data);
+      } catch (err) {
+        console.error("Erreur Linéaire:", err);
+      }
+    };
 
     // === Évaluation des modèles avancés (RF & GB) ===
-    axios
-      .get(`${apiUrl}/model/compare`)
-      .then((res) => setEvaluation(res.data))
-      .catch((err) => console.error("Erreur Évaluation:", err));
-  }, []);
+    const fetchEvaluation = async () => {
+      try {
+        const res = await axios.get(`${API_URL}/model/compare`);
+        setEvaluation(res.data);
+      } catch (err) {
+        console.error("Erreur Évaluation:", err);
+      }
+    };
+
+    fetchLinear();
+    fetchEvaluation();
+  }, [API_URL]);
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -58,7 +74,7 @@ const ModelePrediction = () => {
             <strong>Intercept :</strong> {linear.intercept.toFixed(2)}
           </p>
           <img
-            src={`${apiUrl}${linear.graph_url}`}
+            src={`${API_URL}${linear.graph_url}`}
             alt="Graphique Régression Linéaire"
             className="rounded-lg shadow-md border border-gray-300 w-full max-w-3xl mx-auto"
           />
