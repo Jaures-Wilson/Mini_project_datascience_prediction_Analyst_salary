@@ -116,7 +116,7 @@ export default function Prediction() {
               <p className="text-green-700 text-2xl font-bold">
                 {result.predicted_salary.toLocaleString("fr-FR", {
                   style: "currency",
-                  currency: "XAF"
+                  currency: "Euros"
                 })}
               </p>
             </>

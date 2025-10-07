@@ -59,7 +59,7 @@ const ModelePrediction = () => {
           <p className="mb-2">
             <strong>Prédiction Salaire :</strong>{" "}
             <span className="text-lg font-bold text-blue-700">
-              {linear.prediction} €
+              {linear.prediction.toFixed(3)} Euros
             </span>
           </p>
           <p className="mb-1">
