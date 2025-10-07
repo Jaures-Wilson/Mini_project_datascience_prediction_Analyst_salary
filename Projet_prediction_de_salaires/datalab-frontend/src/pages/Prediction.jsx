@@ -27,7 +27,7 @@ export default function Prediction() {
     else if (isNaN(formData.age) || Number(formData.age) <= 0)
       newErrors.age = "L'âge doit être un nombre positif";
 
-    if (!["Male", "Female"].includes(formData.sexe))
+    if (isNaN(formData.sexe))
       newErrors.sexe = "Sexe invalide";
 
     if (!formData.education_level)
