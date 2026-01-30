@@ -1,0 +1,13 @@
+Flask==3.1.2
+pandas
+SQLAlchemy==2.0.43
+pymysql==1.1.2
+python-dotenv==1.1.1
+gunicorn==23.0.0
+flask-cors==6.0.1
+numpy
+matplotlib==3.10.6
+seaborn==0.13.2
+scikit-learn==1.7.2
+scipy
+joblibput
