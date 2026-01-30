@@ -1,8 +1,8 @@
-# 💰 Salary Prediction System - Full-Stack ML Application
+# Salary Prediction System - Full-Stack ML Application
 
 A comprehensive end-to-end machine learning application for predicting employee salaries based on socio-economic characteristics. This project demonstrates the complete data science workflow from exploratory data analysis to production-ready model deployment with a modern web interface.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Project Overview](#-project-overview)
 - [Key Features](#-key-features)
@@ -24,7 +24,7 @@ A comprehensive end-to-end machine learning application for predicting employee 
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 
 This project was developed as a **capstone data science project** during a fictional internship at **Codec**. It represents a complete implementation of the data science lifecycle, combining machine learning expertise with full-stack development capabilities to create a production-ready salary prediction system.
 
@@ -45,7 +45,7 @@ The system enables organizations and individuals to:
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 ### Data Science & Analytics
 - ✅ **Comprehensive Data Analysis**: Statistical analysis with descriptive statistics (mean, median, standard deviation)
@@ -70,7 +70,7 @@ The system enables organizations and individuals to:
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 ### Machine Learning & Data Science
 | Component | Technology | Purpose |
@@ -110,7 +110,7 @@ The system enables organizations and individuals to:
 
 ---
 
-## 🏗️ Project Architecture
+## Project Architecture
 
 The application follows a **three-tier architecture** with clear separation of concerns:
 
@@ -146,7 +146,7 @@ The application follows a **three-tier architecture** with clear separation of c
 
 ---
 
-## 📊 Model Performance
+## Model Performance
 
 ### Evaluation Metrics
 
@@ -180,7 +180,7 @@ Our final production model demonstrates strong predictive performance:
 
 ---
 
-## 📦 Installation Guide
+## Installation Guide
 
 ### Prerequisites
 
@@ -195,7 +195,7 @@ Ensure you have the following software installed:
 
 ---
 
-### 🪟 Windows 11
+### Windows 11
 
 #### Step 1: Clone the Repository
 
