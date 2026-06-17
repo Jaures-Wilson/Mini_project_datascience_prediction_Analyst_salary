@@ -2,7 +2,7 @@ Flask==3.1.2
 pandas
 SQLAlchemy==2.0.43
 pymysql==1.1.2
-python-dotenv==1.1.1
+python-dotenv==1.2.2
 gunicorn==23.0.0
 flask-cors==6.0.1
 numpy
